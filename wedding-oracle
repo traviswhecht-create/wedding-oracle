@@ -1,0 +1,177 @@
+import streamlit as st
+
+# Set up page configurations to match a premium dark-mode application
+st.set_page_config(
+    page_title="ZERO'S DUAL ORACLE INDICATOR V2.0",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+# Custom CSS for the neon purple theme, glowing borders, and massive typography
+st.markdown("""
+<style>
+    body {
+        background-color: #0B0813 !important;
+        color: #FFFFFF !important;
+    }
+    .stApp {
+        background-color: #0B0813 !important;
+    }
+    .header-box {
+        background: linear-gradient(90deg, #1A0B2E 0%, #0B0813 100%);
+        border: 1px solid #9333EA;
+        border-radius: 8px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .dashboard-card {
+        background-color: #120E24;
+        border: 1px solid rgba(147, 51, 234, 0.4);
+        box-shadow: 0 0 15px rgba(147, 51, 234, 0.15);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 15px;
+        min-height: 180px;
+    }
+    .signal-card {
+        background-color: #1A0D1A;
+        border: 1px solid #FF0055;
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.15);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+    }
+    .signal-title {
+        color: #FF0055;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+    }
+    .signal-action {
+        color: #FF0055;
+        font-size: 48px;
+        font-weight: 900;
+        margin: 10px 0;
+    }
+    .metric-label {
+        color: #A78BFA;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .metric-value {
+        color: #FFFFFF;
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+    .metric-sub {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    .sub-red { color: #EF4444; }
+    .sub-green { color: #10B981; }
+    
+    /* Circular Gauge simulation styling */
+    .gauge-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .gauge-circle {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #120E24 60%, transparent 61%), 
+                    conic-gradient(#EC4899 0% 94%, #2E1065 94% 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    }
+    .gauge-text {
+        font-size: 26px;
+        font-weight: 800;
+        color: #FFFFFF;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Top Bar / Title Layout
+st.markdown("""
+<div class="header-box">
+    <h2 style="color: #C084FC; margin: 0; font-family: monospace; letter-spacing: 2px;">⚡ ZERO'S DUAL ORACLE INDICATOR V2.0 ⚡</h2>
+    <p style="color: #A78BFA; margin: 5px 0 0 0; font-size: 12px;">ASSET TRACKING PROFILE: BITCOIN INSTITUTIONAL FLOWS</p>
+</div>
+""", unsafe_allow_html=True)
+
+# Main Grid Layout setup (3 Primary Columns matching your UI layout)
+col1, col2, col3 = st.columns([1, 1, 1])
+
+with col1:
+    # Action Oracle Panel
+    st.markdown("""
+    <div class="signal-card">
+        <div class="signal-title">MARKET DIRECTION SIGNAL</div>
+        <div class="signal-action">DOWN</div>
+        <div style="background-color: rgba(255,0,85,0.1); border-radius: 6px; padding: 8px; color: #FFAAAA; font-size: 13px; font-weight: bold;">
+            ACTION ORACLE: SELL / LIQUIDATE
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.write("") # Spacer
+    
+    # Spot Price Tracking Card
+    st.markdown("""
+    <div class="dashboard-card">
+        <div class="metric-label">BTC SPOT PRICE</div>
+        <div class="metric-value">$93,388.49</div>
+        <div class="metric-sub sub-red">▼ -$92.30 (-0.12%) vs Session Target</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    # Mathematical Confidence Gauge Panel
+    st.markdown("""
+    <div class="dashboard-card" style="text-align: center;">
+        <div class="metric-label" style="margin-bottom: 10px;">ORACLE CONFIDENCE EVALUATION</div>
+        <div class="gauge-container">
+            <div class="gauge-circle">
+                <div class="gauge-text">94%</div>
+            </div>
+            <div style="color: #EC4899; font-size: 12px; font-weight: bold; margin-top: 10px; letter-spacing: 1px;">
+                CONVERGENCE PROBABILITY: HIGH RISK PROFILE
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    # Order Flow Data Metrics Card (OBI & CVD)
+    st.markdown("""
+    <div class="dashboard-card">
+        <div class="metric-label">Order Book Imbalance (OBI)</div>
+        <div class="metric-value">-11.4%</div>
+        <div class="metric-sub sub-red">▼ Structural Selling Wall Detected at Ask</div>
+        
+        <hr style="border-color: rgba(147, 51, 234, 0.2); margin: 15px 0;">
+        
+        <div class="metric-label">Cumulative Volume Delta (CVD)</div>
+        <div class="metric-value">-1,986,986</div>
+        <div class="metric-sub sub-red">▼ Aggressive Market Orders Driving Lower</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Footer Layout Alignment Status Bar
+st.markdown("""
+<div style="margin-top: 30px; padding: 10px; border-top: 1px solid rgba(147, 51, 234, 0.3); display: flex; justify-content: space-between; font-size: 11px; color: #6B7280; font-family: monospace;">
+    <div>LIVE TELEMETRY STATUS: STATIC SNAPSHOT PROXIED</div>
+    <div>TELEMETRY COMPLIANCE CODE: BTC-STBL-99X</div>
+</div>
+""", unsafe_allow_html=True)
